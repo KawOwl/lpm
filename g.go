@@ -83,7 +83,7 @@ func InitGlobals() {
 	}
 	session.SetMode(mgo.Monotonic, true)
 	G_MongoSession = session
-	G_MongoDB = session.DB("alex")
+	G_MongoDB = session.DB("lpm")
 	// set golang threads num
 	runtime.GOMAXPROCS(runtime.NumCPU())
 }

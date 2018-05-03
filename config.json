@@ -1,6 +1,6 @@
 {
 	"BindAddr": "localhost:8000",
-	"MongoUrl": "mongodb://localhost:27017/alex",
+	"MongoUrl": "mongodb://localhost:27017/lpm",
 	"Teams": [
 		"python",
 		"java",
