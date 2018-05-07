@@ -19,7 +19,7 @@
                 </tr>
                 {{ if .log.JobDetail }}
                 <tr>
-                    <td>Team</td>
+                    <td>团队</td>
                     <td>{{ .log.JobDetail.Team }}</td>
                 </tr>
                 <tr>
@@ -27,11 +27,11 @@
                     <td>{{ .log.JobDetail.Project }}</td>
                 </tr>
                 <tr>
-                    <td>Method</td>
+                    <td>请求方法</td>
                     <td>{{ .log.JobDetail.Method }}</td>
                 </tr>
                 <tr>
-                    <td>Host:Port List</td>
+                    <td>主机:端口 列表</td>
                     <td>
                         <ul class="list-group">
                         {{ range .log.JobDetail.Hosts }} 
