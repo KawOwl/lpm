@@ -7,7 +7,7 @@
         <form class="form-horizontal" id="job_form" method="POST" action="/boom/edit">
           <input type="hidden" name="job_id" value="{{ .Job.Id.Hex }}"/>
           <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">Name</label>
+            <label for="name" class="col-sm-2 control-label">任务名称</label>
             <div class="col-sm-10">
                 <input type="text" name="name" value="{{ .Job.Name }}" class="form-control" required placeholder="Job Name">
             </div>
