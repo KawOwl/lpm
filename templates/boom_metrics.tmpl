@@ -1,12 +1,12 @@
 <div class="panel panel-default">
     <div clas="panel-header">
-        <span class="label label-primary">Boom 基准测试报告</label>
+        <span class="label label-primary">并发基准测试报告</label>
     </div>
     <div class="panel-body">
         <table class="table table-striped table-bordered">
             <tbody>
                 <tr>
-                    <td>Job Id</td>
+                    <td>任务ID</td>
                     <td><a class="btn btn-link" href="/boom/logs?job_id={{ .log.JobId }}">{{ .log.JobId }}</a></td>
                 </tr>
                 <tr>
@@ -14,7 +14,7 @@
                     <td>{{ .log.JobName }}</td>
                 </tr>
                 <tr>
-                    <td>Url</td>
+                    <td>URL</td>
                     <td>{{ .log.JobUrl }}</td>
                 </tr>
                 {{ if .log.JobDetail }}
@@ -49,7 +49,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Comment</td>
+                    <td>附加信息</td>
                     <td>{{ .log.Comment }}</td>
                 </tr>
                 {{ end }}
@@ -76,12 +76,12 @@
 new Dygraph(
     document.getElementById("graph_concurrency_latency"),
     "Concurrency,Response Time/s\n" + {{ .log.ConcurrencyLatencyMetrics }},
-    {"title": "Concurrency-Response Time", "xlabel": "Concurrency", "ylabel": "Response Time(ms)"}
+    {"title": "并发数-响应时间", "xlabel": "并发数", "ylabel": "响应时间(ms)"}
 );
 new Dygraph(
     document.getElementById("graph_status_codes"),
     "Concurrency{{ range $code, $flag := .log.StatusCodesList }},{{ $code }}{{ end }}\n" + {{ .log.StatusCodesMetrics }},
-    {"title": "Concurrency-Status Counters", "xlabel": "Concurrency", "ylabel": "Counter"}
+    {"title": "并发数-状态码计数", "xlabel": "并发数", "ylabel": "状态码计数"}
 );
 </script>
 <div class="panel panel-default">
@@ -91,16 +91,16 @@ new Dygraph(
     <div class="panel-body">
         <table class="table table-striped">
             <tr>
-                <th>Concurrency</th>
-                <th>Duration</th>
+                <th>并发数</th>
+                <th>持续时间</th>
                 <th>Requests</th>
-                <th>SuccessRatio</th>
+                <th>请求成功率</th>
                 <th>QPS</th>
-                <th>Response Time[Mean]</th>
-                <th>Response Time[P95]</th>
-                <th>Response Time[P99]</th>
-                <th>Return Statuses</th>
-                <th>Error Counters</th>
+                <th>平均响应时间</th>
+                <th>95%响应时间</th>
+                <th>99%响应时间</th>
+                <th>返回状态码</th>
+                <th>错误计数</th>
             </tr>
             {{ range .log.MetricsList }}
             <tr>

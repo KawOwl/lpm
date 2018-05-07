@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
     <div class="panel-heading">
-        Boom Run Configuration
+        并发运行配置
     </div>
     <div class="panel-body">
         {{ with .form }}
@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="timeout" class="col-sm-2 control-label">Timeout(s)</label>
+            <label for="timeout" class="col-sm-2 control-label">超时设置(s)</label>
             <div class="col-sm-10">
                 <input type="number" min=1 name="timeout" value="{{ .Job.Timeout }}" required class="form-control">
             </div>
@@ -43,17 +43,17 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label">Concurrency Settings</label>
+            <label class="col-sm-2 control-label">并发数设置</label>
             <div class="col-sm-10">
                 <table class="table table-bordered table-hover" id="rates_table">
                     <tbody>
                         {{ range .Job.Periods }}
                         <tr>
                             <td>
-                            <input type="number" min=1 name='concurrency' value="{{ .Concurrency }}" required title="Concurrency" placeholder='100' class="form-control"/>
+                            <input type="number" min=1 name='concurrency' value="{{ .Concurrency }}" required title="每秒并发数" placeholder='每秒并发数' class="form-control"/>
                             </td>
                             <td>
-                            <input type="number" min=1 name='duration' value="{{ .Duration }}" required title="Time of Duration(s)" placeholder='60' class="form-control"/>
+                            <input type="number" min=1 name='duration' value="{{ .Duration }}" required title="持续时间" placeholder='持续时间' class="form-control"/>
                             </td>
                             <td class="text-center">
                                 <a data-op='add_row' class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></a>
@@ -66,9 +66,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="comment" class="col-sm-2 control-label">Comment</label>
+            <label for="comment" class="col-sm-2 control-label">附加信息</label>
             <div class="col-sm-10">
-                <input type="text" required name="comment" value="" class="form-control" placeholder="write something for backtracing">
+                <input type="text" required name="comment" value="" class="form-control" placeholder="填写附加信息以便回溯">
             </div>
           </div>
           <div class="form-group">

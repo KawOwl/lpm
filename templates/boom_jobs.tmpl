@@ -12,20 +12,20 @@
           </div>
           <div class="form-group">
             <label for="project" class="control-label">测试集名称</label>
-            <input type="text" name="project" value="{{ .project }}" class="form-control" placeholder="Project Name">
+            <input type="text" name="project" value="{{ .project }}" class="form-control" placeholder="测试集名称">
           </div>
           <div class="form-group">
             <label for="url" class="control-label">URL前缀</label>
-            <input type="text" name="url" value="{{ .url }}" class="form-control" placeholder="URL Prefix">
+            <input type="text" name="url" value="{{ .url }}" class="form-control" placeholder="URL前缀">
           </div>
           <button type="submit" class="btn btn-primary">查询</button>
           <a href="" class="btn btn-primary">刷新页面</a>
-          <button type="button" data-toggle="modal" data-target="#newJob" class="btn btn-success pull-right">New Job</button>
+          <button type="button" data-toggle="modal" data-target="#newJob" class="btn btn-success pull-right">新建任务</button>
         </form>
         <br/>
         <table class="table table-striped">
             <tr>
-                <th>ID</th>
+                <th>任务ID</th>
                 <th>任务名称</th>
                 <th>团队</th>
                 <th>测试集</th>
@@ -47,9 +47,9 @@
                 <td><span class="label label-info">{{ .Project }}</span></td>
                 <td>{{ .Url }}</td>
                 {{ if .IsRunning }}
-                <td id="state-{{ .Id.Hex }}"><span class="label label-success">Running</td>
+                <td id="state-{{ .Id.Hex }}"><span class="label label-success">运行中</td>
                 {{ else }}
-                <td id="state-{{ .Id.Hex }}"><span class="label label-default">Quiet</td>
+                <td id="state-{{ .Id.Hex }}"><span class="label label-default">待机中</td>
                 {{ end }}
                 <td id="concurrency-{{ .Id.Hex }}">
                 <span class="badge">{{ .CurrentConcurrency }}</span>
@@ -81,20 +81,20 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</span></button>
-                <h4 class="modal-title">New Job</h4>
+                <h4 class="modal-title">新建任务</h4>
               </div>
               <div class="modal-body">
                 <form class="form-horizontal" method="POST" action="/boom/create" id="create-form">
                   <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">任务名称</label>
                     <div class="col-sm-10">
-                      <input type="text" name="name" class="form-control" required placeholder="Job Name">
+                      <input type="text" name="name" class="form-control" required placeholder="任务名称">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="project" class="col-sm-2 control-label">测试集名称</label>
                     <div class="col-sm-10">
-                      <input type="text" name="project" class="form-control" required placeholder="Project Name">
+                      <input type="text" name="project" class="form-control" required placeholder="测试集名称">
                     </div>
                   </div>
                   <div class="form-group">
@@ -137,9 +137,9 @@
                 var jobId = $(el).data("id");
                 $.get("/api/boom/state?job_id=" + jobId, function(data) {
                     if(data.is_running) {
-                        $('#state-' + jobId).html('<span class="label label-success">Running</span>');
+                        $('#state-' + jobId).html('<span class="label label-success">运行中</span>');
                     } else {
-                        $('#state-' + jobId).html('<span class="label label-default">Quiet</span>');
+                        $('#state-' + jobId).html('<span class="label label-default">待机中</span>');
                         $('#job-' + jobId).removeAttr("data-running");
                     }
                     $('#concurrency-' + jobId).html('<span class="badge">'+ data.current_concurrency +'</span>');
